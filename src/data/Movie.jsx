@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import Loader from "../loader/Loader";
+import Error from "../loader/Error";
 
 export const Movie = () => {
   const { data, loading, error } = useSelector((state) => state.movie);
@@ -11,9 +12,19 @@ export const Movie = () => {
       </div>
     );
 
-  if (error) return <p className="text-center mt-10 text-red-500">{error}</p>;
+  if (error)
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Error message={error} />
+      </div>
+    );
 
-  if (!data) return null;
+  if (!data || data.Response === "False")
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <Error message={data?.Error || "Movie not found"} />
+      </div>
+    );
 
   return (
     <div className="min-h-screen text-white px-4 sm:px-8 py-10">
@@ -121,7 +132,7 @@ export const Movie = () => {
 
           <div>
             <span className="font-semibold text-white">Type:</span>{" "}
-            {data.Type?.toUpperCase()}
+            {data.Type}
           </div>
         </div>
       </div>

@@ -22,9 +22,9 @@ export const Home = () => {
           <div className="flex items-center justify-between h-16">
             <Link
               className="text-2xl sm:text-3xl font-bold text-white"
-              to="/"
+              to="/home"
             >
-              Netflix
+              MovieZone
             </Link>
 
             <div className="flex items-center gap-4 sm:gap-6">

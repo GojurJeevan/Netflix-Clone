@@ -1,0 +1,40 @@
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+.zoom {
+  border: 5px solid yellow;
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  color: white;
+  font-size: 4rem;
+  font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: zoom 3s ease-in-out forwards;
+}
+
+.screen {
+  min-height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
