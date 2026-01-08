@@ -1,12 +1,11 @@
-import { Route, Routes } from "react-router"
-import { Home } from "../pages/Home"
+import { Route, Routes } from "react-router";
+import { Home } from "../pages/Home";
 
 export const AppRouter = () => {
-    return(
-        <>
-            <Routes>
-                <Route path="/home" element={<Home/>} />
-            </Routes>
-        </>
-    )
-}
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+    </Routes>
+  );
+};
