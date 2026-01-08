@@ -1,10 +1,10 @@
 import './App.css'
-import { Home } from './pages/Home'
+import { Header } from './pages/Header'
 
 export const App = () => {
   return(
     <>
-      <Home />
+      <Header />
     </>
   )
 }

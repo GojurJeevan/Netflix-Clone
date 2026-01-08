@@ -10,13 +10,12 @@ import { Search } from "./Search";
 import { Movie } from "../data/Movie";
 import { useSelector } from "react-redux";
 
-export const Home = () => {
+export const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const { data } = useSelector((state) => state.movie);
 
   return (
     <>
-
       <header className="bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
           <div className="flex items-center justify-between h-16">
@@ -47,8 +46,13 @@ export const Home = () => {
       </header>
 
       {showSearch && (
-        <div className="flex justify-center mt-6">
-          <Search />
+        <div className="w-full flex justify-center px-4 bg-gray-800">
+          <div className="w-full max-w-xl bg-gray-200 shadow-xl rounded-3xl p-6 sm:p-8 flex flex-col items-center transition-all duration-300">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Search for a Movie
+            </h2>
+            <Search onSearchSubmit={() => setShowSearch(false)}/>
+          </div>
         </div>
       )}
 
