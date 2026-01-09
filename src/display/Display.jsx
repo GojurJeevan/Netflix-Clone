@@ -8,7 +8,7 @@ export const Dispaly = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate("/home");
-    }, 3000);
+    }, 4000);
     return () => clearTimeout(timer);
   }, [navigate]);
 
