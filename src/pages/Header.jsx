@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link } from "react-router";
 import { Search } from "./Search";
-import { Movie } from "../data/Movie";
 import { useSelector } from "react-redux";
 
 export const Header = () => {
@@ -55,8 +54,6 @@ export const Header = () => {
           </div>
         </div>
       )}
-
-      {data && <Movie />}
     </>
   );
 };
