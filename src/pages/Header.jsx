@@ -7,12 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Search } from "./Search";
-import { useSelector } from "react-redux";
-import { Wishlist } from "../wishlist/WishList";
 
 export const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
-  const { data } = useSelector((state) => state.movie);
   let navigate = useNavigate();
 
   return (
