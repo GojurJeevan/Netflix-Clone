@@ -4,20 +4,18 @@
   }
 
   50% {
-    transform: scale(1.5);
+    transform: scale(4);
   }
 
   100% {
-    transform: scale(2);
+    transform: scale(8);
   }
 }
 
 .zoom {
-  border: 5px solid yellow;
   height: 100px;
   width: 100px;
-  background-color: red;
-  color: white;
+  color: red;
   font-size: 4rem;
   font-weight: bold;
 

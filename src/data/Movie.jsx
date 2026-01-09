@@ -32,7 +32,7 @@ export const Movie = () => {
     );
 
   return (
-    <div className="min-h-screen text-white px-4 sm:px-8 py-10">
+    <div className="min-h-screen text-white px-4 sm:px-8 py-10 bg-black">
       <div className="max-w-6xl mx-auto bg-gray-900 rounded-xl shadow-lg p-6 sm:p-10">
         <div className="flex flex-col md:flex-row gap-8">
           <div className="flex justify-center md:justify-start">

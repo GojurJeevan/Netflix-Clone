@@ -10,7 +10,7 @@ export const Wishlist = () => {
 
   if (!wishlist || wishlist.length === 0) {
     return (
-      <div className="min-h-screen flex items-center justify-center text-gray-400 text-xl">
+      <div className="min-h-screen flex items-center justify-center text-gray-400 text-xl bg-black">
         ❤️ Your wishlist is empty
       </div>
     );

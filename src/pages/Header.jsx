@@ -7,10 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { Search } from "./Search";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   let navigate = useNavigate();
+  const data = useSelector((state) => state.wishlist);
+  const dataCount = Array.isArray(data) ? data.length : 0;
 
   return (
     <>
@@ -34,11 +37,21 @@ export const Header = () => {
                 icon={faUser}
                 className="text-white cursor-pointer text-lg"
               />
-              <FontAwesomeIcon
-                icon={faHeart}
-                className="text-white cursor-pointer text-lg"
-                onClick={()=> navigate("/wishlist")}
-              />
+              <div
+                className="relative cursor-pointer"
+                onClick={() => navigate("/wishlist")}
+              >
+                <FontAwesomeIcon
+                  icon={faHeart}
+                  className="text-white text-lg"
+                />
+
+                {dataCount > 0 && (
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {dataCount}
+                  </span>
+                )}
+              </div>
             </div>
           </div>
         </div>
@@ -50,7 +63,7 @@ export const Header = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-4">
               Search for a Movie
             </h2>
-            <Search onSearchSubmit={() => setShowSearch(false)}/>
+            <Search onSearchSubmit={() => setShowSearch(false)} />
           </div>
         </div>
       )}
