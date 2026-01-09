@@ -6,9 +6,12 @@ export const Dispaly = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    if (window.location.pathname !== "/") return;
+
     const timer = setTimeout(() => {
-      navigate("/home");
+      navigate("/home", { replace: true });
     }, 4000);
+
     return () => clearTimeout(timer);
   }, [navigate]);
 

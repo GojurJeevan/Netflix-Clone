@@ -5,13 +5,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Search } from "./Search";
 import { useSelector } from "react-redux";
+import { Wishlist } from "../wishlist/WishList";
 
 export const Header = () => {
   const [showSearch, setShowSearch] = useState(false);
   const { data } = useSelector((state) => state.movie);
+  let navigate = useNavigate();
 
   return (
     <>
@@ -38,6 +40,7 @@ export const Header = () => {
               <FontAwesomeIcon
                 icon={faHeart}
                 className="text-white cursor-pointer text-lg"
+                onClick={()=> navigate("/wishlist")}
               />
             </div>
           </div>

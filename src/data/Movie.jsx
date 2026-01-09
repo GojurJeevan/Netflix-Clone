@@ -1,8 +1,17 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../loader/Loader";
 import Error from "../loader/Error";
+import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as regularHeart } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { WISHLIST } from "../wishlist/WishListSlice";
 export const Movie = () => {
   const { data, loading, error } = useSelector((state) => state.movie);
+  const dispatch = useDispatch();
+  const wishlist = useSelector((state) => state.wishlist || []);
+
+  const isWishListed = !!data?.imdbID && wishlist.some((item) => item?.imdbID === data.imdbID);
+
   if (loading)
     return (
       <div className="flex items-center justify-center min-h-screen text-black text-4xl">
@@ -21,6 +30,7 @@ export const Movie = () => {
         <Error message={data?.Error || "Movie not found"} />
       </div>
     );
+
   return (
     <div className="min-h-screen text-white px-4 sm:px-8 py-10">
       <div className="max-w-6xl mx-auto bg-gray-900 rounded-xl shadow-lg p-6 sm:p-10">
@@ -33,7 +43,23 @@ export const Movie = () => {
             />
           </div>
           <div className="flex-1 space-y-3">
-            <h1 className="text-3xl sm:text-4xl font-bold">{data.Title}</h1>
+            <div className="flex items-center justify-between gap-4">
+              <h1 className="text-3xl sm:text-4xl font-bold">{data.Title}</h1>
+
+              <button
+                onClick={() => dispatch(WISHLIST(data))}
+                className="text-2xl transition-transform hover:scale-110"
+                title={
+                  isWishListed ? "Remove from Wishlist" : "Add to Wishlist"
+                }
+              >
+                <FontAwesomeIcon
+                  icon={isWishListed ? solidHeart : regularHeart}
+                  className={isWishListed ? "text-red-500" : "text-gray-400"}
+                />
+              </button>
+            </div>
+
             <p className="text-gray-400">
               {data.Year} • {data.Rated} • {data.Runtime}
             </p>
